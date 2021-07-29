@@ -178,7 +178,7 @@ class MovieListRepositoryTests: XCTestCase {
         XCTAssertEqual(entity.title, coalescedMovieEntity.title)
         XCTAssertEqual(entity.overview, coalescedMovieEntity.overview)
         
-        //MARK: mock date time
+        //MARK: How to mock date time
 //        XCTAssertEqual(entity.releaseDate, coalescedMovieEntity.releaseDate)
     }
     

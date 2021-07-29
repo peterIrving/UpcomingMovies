@@ -42,9 +42,6 @@ struct MovieTileViewModel: Equatable, Identifiable {
             subtitle:  movieEntity.genreIds.map({ id in
                 return id.convertIntToGenre()
             }).returnListWithCommasAsString())
-        
     }
-    
-    
 }
 

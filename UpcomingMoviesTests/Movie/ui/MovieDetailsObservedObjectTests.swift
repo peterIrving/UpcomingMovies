@@ -13,14 +13,6 @@ let mockMovieDetailError = NSError(domain: "mock failure", code: 1, userInfo: ni
 
 class MovieDetailsObservedObjectTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testStatesUponSuccessMovieFetch() throws {
         let observableObject = MovieDetailObservableObject(repo: SuccessMockMovieListRepo())
         let expectation = XCTestExpectation(description: "Publishes many value then finishes")

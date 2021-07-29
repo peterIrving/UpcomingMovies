@@ -27,7 +27,31 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9DF2CFDD26B2F15600AF7029"
+            BuildableName = "UpcomingMovies.app"
+            BlueprintName = "UpcomingMovies"
+            ReferencedContainer = "container:UpcomingMovies.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9DF2CFEE26B2F15700AF7029"
+            BuildableName = "UpcomingMoviesTests.xctest"
+            BlueprintName = "UpcomingMoviesTests"
+            ReferencedContainer = "container:UpcomingMovies.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9DF2CFF926B2F15700AF7029"
+            BuildableName = "UpcomingMoviesUITests.xctest"
+            BlueprintName = "UpcomingMoviesUITests"
+            ReferencedContainer = "container:UpcomingMovies.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
