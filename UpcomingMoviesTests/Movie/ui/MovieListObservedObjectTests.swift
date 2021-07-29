@@ -31,14 +31,14 @@ class MovieListObservedObjectTests: XCTestCase {
         observableObject.$state.sink(
             receiveValue: { value in
                 values.append(value)
-                if value == .Loaded(mockViewModel) {
+                if value == .Loaded(mockListViewModel) {
                     expectation.fulfill()
                 }
             }).store(in: &bag)
         
         observableObject.loadList()
         wait(for: [expectation], timeout: 10)
-        XCTAssertEqual(values, [.Idle,.Loading,.Loaded(mockViewModel)])
+        XCTAssertEqual(values, [.Idle,.Loading,.Loaded(mockListViewModel)])
     }
     
     func testStatesUponFailedRepoCall() throws {

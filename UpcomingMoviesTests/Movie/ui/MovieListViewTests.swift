@@ -7,29 +7,43 @@
 
 import XCTest
 @testable import UpcomingMovies
+import ViewInspector
 
-//let mockListViewModel = MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "title", subtitle: "subtitle")])
-//
-//let mockIdleListState = MovieListStateEnum.Idle
-//let mockLoadingListState = MovieListStateEnum.Loading
-//let mockLoadedListState = MovieListStateEnum.Loaded(mockViewModel)
-//let mockFailedListState = MovieListStateEnum.Failed("failed")
+
+extension MovieListBody: Inspectable { }
 
 class MovieListViewTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func testIdleStateDislaysProgressView() throws {
+        let movieListBody = MovieListBody(state: mockIdleListState)
+        
+        let _ = try movieListBody.inspect().anyView(0).progressView()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testLoadingStateDislaysProgressView() throws {
+        let movieListBody = MovieListBody(state: mockLoadingListState)
+        
+        let _ = try movieListBody.inspect().anyView(0).progressView()
     }
-
-    func testExample() throws {
-//        let movieListBody = MovieListBody(state: mockIdleListState)
-//        try movieListBody.inspect().find(ViewType.ProgressView.self)
+    
+    func testFailedStateDisplaysErrorMessage() throws {
+        let movieListBody = MovieListBody(state: mockFailedListState)
+        
+        let _ = try
+            movieListBody.inspect().anyView().find(text:"failed")
+        
     }
-
-
-
+    
+    func testLoadedStateDisplaysListView() throws {
+        let movieListBody = MovieListBody(state: mockLoadedListState)
+        
+        let _ = try
+                    movieListBody.inspect().anyView().list()
+     
+        
+    }
+    
+    
+    
 }
+

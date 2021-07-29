@@ -15,7 +15,7 @@ class SuccessMockMovieListRepo: MovieListRepository {
     }
     
     func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.success(mockViewModel))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.success(mockListViewModel))
         }
     }
 }

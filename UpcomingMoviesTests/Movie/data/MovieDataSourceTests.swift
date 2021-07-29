@@ -12,7 +12,6 @@ class MovieDataSourceTests: XCTestCase {
 
     var movieDataSource: MovieDataSource!
       var expectation: XCTestExpectation!
-//      let apiURL = URL(string: "https://jsonplaceholder.typicode.com/posts/42")!
         let apiURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=\(apiKey)&language=en-US&page=1")!
 
       override func setUp() {
@@ -26,9 +25,6 @@ class MovieDataSourceTests: XCTestCase {
 
     func testSuccessfulFetch () throws {
         
-        // prepare mock
-        
-        // Prepare mock response.
         let page = 1
         let adult = false
         let genreIds = [16,35,10751,878]
@@ -36,8 +32,7 @@ class MovieDataSourceTests: XCTestCase {
         let overview = """
         When LeBron and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court. It's Tunes versus Goons in the highest-stakes challenge of his life.
         """
-        // MARK: to decode poster_path
-//        let posterPath = "/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg"
+
         let releaseDateString = "2021-07-08"
         let title = "Space Jam: A New Legacy"
         
@@ -56,13 +51,9 @@ class MovieDataSourceTests: XCTestCase {
             ]
         }
         """.data(using: .utf8)!
-        
-        
-        // end prepare mock
-        
+      
         MockURLProtocol.requestHandler = { request in
           guard let url = request.url, url == self.apiURL else {
-//            throw APIResponseError.request
             throw NSError(domain: "incorrect url", code: 1, userInfo: nil)
           }
           

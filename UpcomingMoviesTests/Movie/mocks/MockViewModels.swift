@@ -16,4 +16,4 @@ let mockMovieDetailViewModel = MovieDetailViewModel(id: 1,
                                           overview: "this is the overview",
                                           releaseDateString: "releaseDateString")
 
-let mockViewModel = MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "title", subtitle: "subtitle")])
+let mockListViewModel = MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "title", subtitle: "subtitle")])
