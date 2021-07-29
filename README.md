@@ -1,5 +1,5 @@
 # UpcomingMovies
-A simple app that calls The Movie Database Api 
+A simple app that calls The Movie Database Api that is built with test driven development in mind
 
 ### To Run
 
