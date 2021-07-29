@@ -31,7 +31,7 @@ struct MovieListBody: View {
             return  AnyView(
                 List(viewModel.list) {
                     movie in
-                    NavigationLink(destination: MovieDetailView(id: movie.movieId).environmentObject(MovieDetailObservableObject(repo: productionMovieListRepository))) {
+                    NavigationLink(destination: MovieDetailView(id: movie.movieId, title: movie.title).environmentObject(MovieDetailObservableObject(repo: productionMovieListRepository))) {
                         VStack(alignment: HorizontalAlignment.leading, spacing: 4) {
                             Text("\(movie.title)")
                             Text(movie.subtitle).font(.caption)
@@ -46,9 +46,3 @@ struct MovieListBody: View {
         }
     }
 }
-//
-//struct MovieListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MovieListView()
-//    }
-//}

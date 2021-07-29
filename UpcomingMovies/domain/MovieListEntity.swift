@@ -26,7 +26,7 @@ struct MovieEntity: Equatable {
     let id: Int
     let title: String
     let adult: Bool
-    let genreTitles: [String]
+    let genreIds: [Int]
     let overview: String
     let releaseDate: Date
     
@@ -34,7 +34,7 @@ struct MovieEntity: Equatable {
         return (lhs.id == rhs.id
                     && lhs.title == rhs.title
                     && lhs.adult == rhs.adult
-                    && lhs.genreTitles == rhs.genreTitles
+                    && lhs.genreIds == rhs.genreIds
                     && lhs.overview == rhs.overview
                     && lhs.releaseDate == rhs.releaseDate)
     }
@@ -43,7 +43,7 @@ struct MovieEntity: Equatable {
         return MovieEntity(id: movieResponse.id,
                            title: movieResponse.title ?? "n/a",
                            adult: movieResponse.adult ?? false,
-                           genreTitles: movieResponse.genreTitles ?? [],
+                           genreIds: movieResponse.genreIds ?? [],
                            overview: movieResponse.overview ?? "not available",
                            releaseDate: movieResponse.releaseDate ?? Date())
     }

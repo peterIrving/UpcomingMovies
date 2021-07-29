@@ -40,7 +40,7 @@ struct MovieListResponseModel: Codable {
 
 struct MovieResponseModel: Codable {
     enum CodingKeys: String, CodingKey {
-        case genreTitles = "genre_ids"
+        case genreIds = "genre_ids"
         case id
         case title
         case adult
@@ -51,7 +51,7 @@ struct MovieResponseModel: Codable {
     let id: Int
     let title: String?
     let adult: Bool?
-    let genreTitles: [String]?
+    let genreIds: [Int]?
     let overview: String?
     let releaseDate: Date?
 }
@@ -64,19 +64,20 @@ extension MovieResponseModel {
         overview = try container.decode(String.self, forKey: .overview)
         
         
-        let genreInts = try container.decode([Int].self, forKey: .genreTitles)
-        genreTitles = genreInts.map { id in
-            return id.convertIntToGenre()
-        }
+        genreIds = try container.decode([Int].self, forKey: .genreIds)
+//        genreTitles = genreInts.map { id in
+//            return id.convertIntToGenre()
+//        }
         
         let dateString = try container.decode(String.self, forKey: .releaseDate)
         let formatter = DateFormatter.yyyyMMdd
         if let date = formatter.date(from: dateString) {
             releaseDate = date
         } else {
-            throw DecodingError.dataCorruptedError(forKey: .releaseDate,
-                  in: container,
-                  debugDescription: "Date string does not match format expected by formatter.")
+//            throw DecodingError.dataCorruptedError(forKey: .releaseDate,
+//                  in: container,
+//                  debugDescription: "Date string does not match format expected by formatter.")
+            releaseDate = nil
         }
       }
 }

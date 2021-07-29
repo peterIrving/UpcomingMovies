@@ -7,15 +7,18 @@
 
 import Foundation
 
-let productionMovieListRepository = MovieListRepositoryImpl()
 
 protocol MovieListRepository {
+  
+    /// If Repository does not have a stored MovieListEntity, Request MovieListReponseModel from MovieDataSource, Converts ResponseModel into MovieListEntity and stores entity In Repository,
+    /// Converts MovieListEntity into MovieListViewModel then Fires completion with either a MovieListViewModel or an Error
     func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>)->())
+    
+    /// Fetches Movie Entity from Repositories Stored Entity for requested ID. If ID Exists, completion called with MovieDetailViewModel, if it does not exist, compeletion is called with Error
     func fetchMovieDetailsForId(id: Int, completion: @escaping (Result<MovieDetailViewModel, Error>)->())
 }
 
 class MovieListRepositoryImpl : MovieListRepository{
-
     
     var dataSource: MovieDataSource
     var movieListEntity: MovieListEntity?
@@ -24,7 +27,6 @@ class MovieListRepositoryImpl : MovieListRepository{
         self.dataSource = dataSource
     }
     
-    //MARK: Dont coalescnce optional strings here
     func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
        if movieListEntity == nil {
             dataSource.fetchList {[weak self] response in
@@ -53,6 +55,8 @@ class MovieListRepositoryImpl : MovieListRepository{
     func movieListViewModelCallback(completion: @escaping (Result<MovieListViewModel, Error>) -> ())  {
         if let entity = movieListEntity {
             completion(.success(MovieListViewModel.fromEntity(entity: entity)))
+        } else {
+            completion(.failure(NSError(domain: "movie list not found", code: 1, userInfo: nil)))
         }
     }
     

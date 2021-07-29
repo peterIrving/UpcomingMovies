@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+let productionMovieListRepository = MovieListRepositoryImpl()
+
 @main
 struct UpcomingMoviesApp: App {
     let movieListObservable = MovieListObservableObject(repo: productionMovieListRepository)
 
     var body: some Scene {
         WindowGroup {
-
             MovieListView().environmentObject(movieListObservable)
         }
     }

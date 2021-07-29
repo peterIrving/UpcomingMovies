@@ -9,37 +9,7 @@ import XCTest
 @testable import UpcomingMovies
 import Combine
 
-let mockMovieDetailViewModel = MovieDetailViewModel(id: 1,
-                                          title: "first",
-                                          adult: false,
-                                          genreTitles: "action, comedy",
-                                          overview: "this is the overview",
-                                          releaseDate: Date(timeIntervalSinceReferenceDate: -123456789.0))
-
 let mockMovieDetailError = NSError(domain: "mock failure", code: 1, userInfo: nil)
-
-
-class SuccessDetailsMockMovieListRepo: MovieListRepository {
-    func fetchMovieDetailsForId(id: Int, completion: @escaping (Result<MovieDetailViewModel, Error>) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.success(mockMovieDetailViewModel))
-        }
-    }
-    
-    func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
-      
-    }
-}
-
-class FailedDetailsMockMovieListRepo: MovieListRepository {
-    func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
-      
-    }
-    func fetchMovieDetailsForId(id: Int, completion: @escaping (Result<MovieDetailViewModel, Error>) -> ()) {
-    
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.failure(mockMovieDetailError))
-        }
-    }
-}
 
 class MovieDetailsObservedObjectTests: XCTestCase {
 
@@ -52,7 +22,7 @@ class MovieDetailsObservedObjectTests: XCTestCase {
     }
 
     func testStatesUponSuccessMovieFetch() throws {
-        let observableObject = MovieDetailObservableObject(repo: SuccessDetailsMockMovieListRepo())
+        let observableObject = MovieDetailObservableObject(repo: SuccessMockMovieListRepo())
         let expectation = XCTestExpectation(description: "Publishes many value then finishes")
         var bag = Set<AnyCancellable>()
         var values: [MovieDetailStateEnum] = []
@@ -71,7 +41,7 @@ class MovieDetailsObservedObjectTests: XCTestCase {
     }
     
     func testStatesUponFailedMovieFetch() throws {
-        let observableObject = MovieDetailObservableObject(repo: FailedDetailsMockMovieListRepo())
+        let observableObject = MovieDetailObservableObject(repo: FailedMockMovieListRepo())
         let expectation = XCTestExpectation(description: "Publishes many value then finishes")
         var bag = Set<AnyCancellable>()
         var values: [MovieDetailStateEnum] = []

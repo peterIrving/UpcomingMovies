@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MovieDetailView: View {
     let id: Int
-
+    let title:String
+    
     @EnvironmentObject var detailObservable: MovieDetailObservableObject
     
     var body: some View {
@@ -17,7 +18,7 @@ struct MovieDetailView: View {
             MovieDetailBody(state: detailObservable.state)
         }.onAppear {
             detailObservable.loadList(id: id)
-        }
+        }.navigationBarTitle(Text(title),displayMode: .inline )
     }
 }
 
@@ -30,13 +31,30 @@ struct MovieDetailBody: View {
             return AnyView(Text(message))
         case .Loaded(let viewModel):
             return  AnyView(
-                VStack{
-                    Text(viewModel.title)
-                    //                    Text(viewModel.releaseDate)
-//                    Text(viewModel.)
-                    //                    Text(viewModel.adult)
-                    //                    Text(viewModel.releaseDate)
-                    Text(viewModel.overview)
+                ScrollView{
+                    VStack(alignment: .leading, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 4){
+                            Text(viewModel.title).font(.title)
+                            Text("In Theaters: " + viewModel.releaseDateString)
+                        }
+                        VStack(alignment: .leading, spacing: 6){
+                            Text("Overview").font(.title2)
+                            Divider()
+                            Text(viewModel.overview).font(.body)
+                        }
+                        VStack(alignment: .leading, spacing: 6){
+                            Text("Genre\(viewModel.genreTitles.count == 1 ? "" : "s")").font(.title2)
+                            Divider()
+                            Text(viewModel.genreTitles).font(.body)
+                        }
+                        VStack(alignment: .leading, spacing: 6){
+                            Text("Age Recommendation").font(.title2)
+                            Divider()
+                            Text(viewModel.ageReccomendationString).font(.body)
+                        }
+                    }.frame(maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .topLeading).padding(16)
                 }
             )
         default:
@@ -46,40 +64,6 @@ struct MovieDetailBody: View {
 }
 
 
-//struct MovieDetailView: View {
-//    let id: Int
-//
-//    @EnvironmentObject var detailObservable: MovieDetailObservableObject
-//
-//    var body: some View {
-//        VStack{
-//            buildView()
-//        }.onAppear {
-//            detailObservable.loadList(id: id)
-//        }
-//    }
-//
-//    func buildView()-> some View {
-//        switch detailObservable.state {
-//        case .Failed(let message):
-//            return AnyView(Text(message))
-//        case .Loaded(let viewModel):
-//            return  AnyView(
-//                VStack{
-//                    Text(viewModel.title)
-//                    //                    Text(viewModel.releaseDate)
-////                    Text(viewModel.)
-//                    //                    Text(viewModel.adult)
-//                    //                    Text(viewModel.releaseDate)
-//                    Text(viewModel.overview)
-//                }
-//            )
-//        default:
-//            return AnyView(ProgressView())
-//        }
-//    }
-//}
-//
 //struct MovieDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MovieDetailView( id: 1)

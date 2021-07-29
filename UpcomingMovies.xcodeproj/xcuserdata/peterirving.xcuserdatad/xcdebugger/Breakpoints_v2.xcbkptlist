@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5A76EDB9-C5E7-408D-B69A-B690078672D0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82E1A6E2-AC68-4DEC-82CD-B8E30FACC4BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpcomingMoviesTests/Movie/data/MovieDataSourceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "testSuccessfulFetch()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82E1A6E2-AC68-4DEC-82CD-B8E30FACC4BD - af48f0319e9fdf3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URLRequest) throws -&gt; (__C.NSHTTPURLResponse, Swift.Optional&lt;Foundation.Data&gt;) in UpcomingMoviesTests.MovieDataSourceTests.testSuccessfulFetch() throws -&gt; ()"
+                  moduleName = "UpcomingMoviesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/peterirving/Desktop/UpcomingMovies/UpcomingMoviesTests/Movie/data/MovieDataSourceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "1136">
+               </Location>
+               <Location
+                  uuid = "82E1A6E2-AC68-4DEC-82CD-B8E30FACC4BD - af48f0319e9fdf3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URLRequest) throws -&gt; (__C.NSHTTPURLResponse, Swift.Optional&lt;Foundation.Data&gt;) in UpcomingMoviesTests.MovieDataSourceTests.testSuccessfulFetch() throws -&gt; ()"
+                  moduleName = "UpcomingMoviesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/peterirving/Desktop/UpcomingMovies/UpcomingMoviesTests/Movie/data/MovieDataSourceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60B26D5E-7458-4D89-A3D0-EAD232A65DF1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpcomingMoviesTests/Movie/data/MovieDataSourceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "testSuccessfulFetch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE3DDE93-9E8A-46DB-A51D-07458C94DC4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpcomingMoviesTests/Movie/mocks/MockURLProtocol.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "startLoading()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11A2324F-1313-4BE7-9C21-D9AB7F899930"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpcomingMoviesTests/Movie/mocks/MockURLProtocol.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "startLoading()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EF5F214-61B5-4520-B8DD-D7283B0394F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpcomingMoviesTests/Movie/mocks/MockURLProtocol.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "startLoading()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

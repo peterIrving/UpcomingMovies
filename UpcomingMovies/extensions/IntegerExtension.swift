@@ -33,16 +33,5 @@ extension Int {
         default: return "Unknown"
         }
     }
-    
-    /*
-     16,
-     35,
-     10751,
-     878
-     
-     */
-//    let list = ["Animation", "Comedy", "Family", "Science Fiction"]
-    //[28, 12, 53,878]
-//    let list = ["Action", "Adventure", "Thriller", "Science Fiction"]
 }
 

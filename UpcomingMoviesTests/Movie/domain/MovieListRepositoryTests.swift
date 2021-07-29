@@ -8,60 +8,11 @@
 import XCTest
 @testable import UpcomingMovies
 
-let successResponseModel =
-    MovieListResponseModel(page: 1,
-                           results: [
-                            MovieResponseModel(id: 1,
-                                               title: "first",
-                                               adult: false,
-                                               genreTitles: ["action", "comedy"],
-                                               overview: "this is the overview",
-                                               releaseDate:  Date(timeIntervalSinceReferenceDate: -123456789.0))
-                           ])
-
-let nilResponseModel = MovieResponseModel(id: 1, title: nil, adult: nil,genreTitles: nil,overview: nil,releaseDate: nil)
-
-let coalescedMovieEntity = MovieEntity(id: 1, title: "n/a", adult: false, genreTitles: [], overview: "not available", releaseDate: Date())
-
-let mockMovieListEntity =  MovieListEntity(
-    movies: [
-        mockMovieEntity
-    ])
-
-let mockMovieEntity = MovieEntity(
-    id: 1,
-    title: "first",
-    adult: false,
-    genreTitles: ["action", "comedy"],
-    overview: "this is the overview",
-    releaseDate: Date(timeIntervalSinceReferenceDate: -123456789.0)
-)
 
 let movieNotFoundError = NSError(domain: "movie not found", code: 1, userInfo: nil)
 
-class SuccessfulMockMovieDataSource: MovieDataSource{
-    func fetchList(completion: @escaping (Result<MovieListResponseModel, Error>) -> Void) {
-        completion(.success(successResponseModel))
-    }
-}
-
-class FailedMockMovieDataSource: MovieDataSource{
-    func fetchList(completion: @escaping (Result<MovieListResponseModel, Error>) -> Void) {
-        completion(.failure(NSError(domain: "mock error", code: 0, userInfo: nil )))
-    }
-}
-
-
-
 class MovieListRepositoryTests: XCTestCase {
     
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testRepositoryFetchListReturnsListViewModelOnSuccess() throws{
         let mockedDataSource = SuccessfulMockMovieDataSource()
@@ -74,7 +25,7 @@ class MovieListRepositoryTests: XCTestCase {
             
             switch (result ) {
             case .success(let movieListViewModel):
-                XCTAssertEqual(movieListViewModel, MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "first", subtitle: "action, comedy")]))
+                XCTAssertEqual(movieListViewModel, MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "first", subtitle: "Action, Adventure")]))
                 expectation.fulfill()
                 break
             case .failure(_):
@@ -105,7 +56,7 @@ class MovieListRepositoryTests: XCTestCase {
                                         id: 1,
                                         title: "first",
                                         adult: false,
-                                        genreTitles: ["action", "comedy"],
+                                        genreIds: [28, 12],
                                         overview: "this is the overview",
                                         releaseDate: Date(timeIntervalSinceReferenceDate: -123456789.0))
                                 ]))
@@ -170,10 +121,7 @@ class MovieListRepositoryTests: XCTestCase {
     }
     
     
-    func testArrayStringPrintExtension()throws {
-        let array = ["action", "comedy"]
-        XCTAssertEqual(array.returnListWithCommasAsString(), "action, comedy")
-    }
+ 
     
     func testSelectingMovieDetailsWithValidIDReturnsProperDetailsViewModel()throws {
         let movieListRepository = MovieListRepositoryImpl(dataSource: SuccessfulMockMovieDataSource())
@@ -226,11 +174,23 @@ class MovieListRepositoryTests: XCTestCase {
         
         XCTAssertEqual(entity.id, coalescedMovieEntity.id)
         XCTAssertEqual(entity.adult, coalescedMovieEntity.adult)
-        XCTAssertEqual(entity.genreTitles, coalescedMovieEntity.genreTitles)
+        XCTAssertEqual(entity.genreIds, coalescedMovieEntity.genreIds)
         XCTAssertEqual(entity.title, coalescedMovieEntity.title)
         XCTAssertEqual(entity.overview, coalescedMovieEntity.overview)
         
         //MARK: mock date time
 //        XCTAssertEqual(entity.releaseDate, coalescedMovieEntity.releaseDate)
+    }
+    
+    func testMovieListViewModelCallbackResultFailureIfEntityIsNull() throws {
+        let movieListRepository = MovieListRepositoryImpl(dataSource: SuccessfulMockMovieDataSource())
+        movieListRepository.movieListViewModelCallback { result in
+            switch result {
+            case .success(_):
+                XCTFail()
+            case .failure(_):
+                XCTAssert(true)
+            }
+        }
     }
 }

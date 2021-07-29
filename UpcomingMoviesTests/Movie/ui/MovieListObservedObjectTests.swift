@@ -9,27 +9,8 @@ import XCTest
 @testable import UpcomingMovies
 import Combine
 
-let mockViewModel = MovieListViewModel(list: [MovieTileViewModel(movieId: 1, title: "title", subtitle: "subtitle")])
+
 let mockError = NSError(domain: "mock failure", code: 1, userInfo: nil)
-
-class SuccessMockMovieListRepo: MovieListRepository {
-    func fetchMovieDetailsForId(id: Int, completion: @escaping (Result<MovieDetailViewModel, Error>) -> ()) {
-    }
-    
-    func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.success(mockViewModel))
-        }
-    }
-}
-
-class FailedMockMovieListRepo: MovieListRepository {
-    func fetchMovieList(completion: @escaping (Result<MovieListViewModel, Error>) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {     completion(.failure(mockError))
-        }
-    }
-    func fetchMovieDetailsForId(id: Int, completion: @escaping (Result<MovieDetailViewModel, Error>) -> ()) {
-    }
-}
 
 class MovieListObservedObjectTests: XCTestCase {
     
